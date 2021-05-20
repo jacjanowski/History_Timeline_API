@@ -16,17 +16,23 @@ app.use(express.static(__dirname + '/public/'));
 
 app.get("/", function(req,res){
 
-    request(URL, function(err, res, body){
-        if(!err && res.statusCode == 200){
+    request(URL, function(error, response, body){
+        if(!error && response.statusCode == 200){
             var data = JSON.parse(body);
             console.log("----------------------------------")
-            console.log(data.events[0].description)
+            var dataObject = [
+                {
+                    date: data.date,
+                    year: data.events[0].year,
+                    description: data.events[0].description
+                }
+            ]
+            res.render("show",{dataObject: dataObject});
         }
     })
 
 
 
-	res.render("show")
 });
 
 
