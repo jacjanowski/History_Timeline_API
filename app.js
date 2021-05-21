@@ -47,6 +47,13 @@ app.get("/", function (req, res) {
 
 
 
+<<<<<<< HEAD
 app.listen(PORT, function () {
     console.log('server successfully started on port ' + PORT);
 });
+=======
+
+app.listen(PORT, function () {
+    console.log('server successfully started on port ' + PORT);
+});
+>>>>>>> 483baef41c14a08a394ccc03a9c28525859dca3e
