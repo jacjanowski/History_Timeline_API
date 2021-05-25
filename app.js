@@ -8,7 +8,7 @@ var PORT = process.env.PORT || 3000;
 var app = express();
 
 
-const URL = 'https://byabbe.se/on-this-day/1/7/events.json'
+// const URL = 'https://byabbe.se/on-this-day/1/7/events.json'
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
@@ -17,6 +17,14 @@ app.use(express.static(__dirname + '/public/'));
 var arrayOfEvents = [];
 app.get("/", function (req, res) {
 
+    res.render("home");
+
+
+});
+
+app.post('/time', function (req, res) {
+    var URL = 'https://byabbe.se/on-this-day/' + req.body.month + "/" + req.body.day + "/events.json";
+    console.log("URL is: " + URL);
     request(URL, function (error, response, body) {
         if (!error && response.statusCode == 200) {
             var data = JSON.parse(body);
@@ -33,11 +41,7 @@ app.get("/", function (req, res) {
             res.render("show", { dataObject: arrayOfEvents });
         }
     })
-
-
-
-});
-
+})
 
 
 
@@ -47,13 +51,7 @@ app.get("/", function (req, res) {
 
 
 
-<<<<<<< HEAD
-app.listen(PORT, function () {
-    console.log('server successfully started on port ' + PORT);
-});
-=======
 
 app.listen(PORT, function () {
     console.log('server successfully started on port ' + PORT);
 });
->>>>>>> 483baef41c14a08a394ccc03a9c28525859dca3e
