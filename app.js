@@ -14,7 +14,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public/'));
 
-var arrayOfEvents = [];
 app.get("/", function (req, res) {
 
     res.render("home");
@@ -22,11 +21,17 @@ app.get("/", function (req, res) {
 
 });
 
-app.post('/time', function (req, res) {
+
+
+app.post('/on-this-day', function (req, res) {
+
     var URL = 'https://byabbe.se/on-this-day/' + req.body.month + "/" + req.body.day + "/events.json";
     console.log("URL is: " + URL);
+
     request(URL, function (error, response, body) {
         if (!error && response.statusCode == 200) {
+
+            var arrayOfEvents = [];
             var data = JSON.parse(body);
             var eventLength = data.events.length;
             for (var i = 0; i < eventLength; i++) {
@@ -41,6 +46,12 @@ app.post('/time', function (req, res) {
             res.render("show", { dataObject: arrayOfEvents });
         }
     })
+})
+
+app.get('/on-this-day/:month/:day', function (req, res) {
+    res.send("we made it to the query page")
+    console.log(req.params);
+
 })
 
 
