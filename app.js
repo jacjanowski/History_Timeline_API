@@ -32,18 +32,27 @@ app.post('/on-this-day', function (req, res) {
         if (!error && response.statusCode == 200) {
 
             var arrayOfEvents = [];
+            var sources = [];
             var data = JSON.parse(body);
             var eventLength = data.events.length;
             for (var i = 0; i < eventLength; i++) {
                 arrayOfEvents.push({
                     date: data.date,
                     year: data.events[i].year,
-                    description: data.events[i].description
+                    description: data.events[i].description,
+                    amount: data.events[i].wikipedia.length
                 });
+                for(var j = 0; j < data.events[i].wikipedia.length; j++){
+                    sources.push({
+                        title: data.events[i].wikipedia[j].title,
+                        wikipedia: data.events[i].wikipedia[j].wikipedia
+                    });
+                }
+                console.log(arrayOfEvents[i].amount)
 
             }
 
-            res.render("show", { dataObject: arrayOfEvents });
+            res.render("show", { dataObject: arrayOfEvents, sourceObject: sources });
         }
     })
 })

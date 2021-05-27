@@ -33,9 +33,9 @@
 
     <nav style=" position: fixed; top: 0; background-color: white; width: 100%; z-index: 1;">
 
-        <h2 class="ui center aligned icon header">
-                <i class="history icon"></i>
-            On <%= dataObject[0].date%>, these things happened...
+        <h2 style="margin-top: 2%;" class="ui center aligned icon header">
+            <i class="calendar alternate outline icon"></i>
+            On <%= dataObject[0].date%>, these events occurred...
         </h2>
     </nav>
 
@@ -49,14 +49,20 @@
                     <b>
                         yr. <%= action.year %>
                     </b>
+                    <% for(var index = 0; index < action.amount ; index++){ %>
+                        <p>
+                            <%= sourceObject[index].title%>
+                        </p>
+                        <p>
+                            <%= sourceObject[index].wikipedia%>
+                        </p>
+                    <% } %>
                 </p>
                 <p>
                     <%= action.description%>
                 </p>
-            </li>
 
-
-            <% }); %>
+                <% }); %>
         </ul>
     </div>
 
