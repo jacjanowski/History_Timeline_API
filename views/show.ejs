@@ -40,23 +40,23 @@
     </nav>
 
 
-
+    <% var roll = 0;%>
     <div style="padding-top: 5%;" class="container">
         <ul class="timeline">
             <% dataObject.forEach(function(action){ %>
+                
             <li>
                 <p>
                     <b>
                         yr. <%= action.year %>
                     </b>
-                    <% for(var index = 0; index < action.amount ; index++){ %>
-                        <p>
-                            <%= sourceObject[index].title%>
+                    <% for(var index = 0; index < action.amount; index++){ %>
+                        <p style="font-size: 10px;">
+                            <a href="<%= sourceObject[roll].wikipedia%>"><%= sourceObject[roll].title%></a> 
                         </p>
-                        <p>
-                            <%= sourceObject[index].wikipedia%>
-                        </p>
+                        <% roll = roll + 1;%>
                     <% } %>
+
                 </p>
                 <p>
                     <%= action.description%>
