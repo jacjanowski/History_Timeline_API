@@ -80,3 +80,26 @@ h3{
 	opacity:1;
 	transform:translateX(0);
 }
+
+/* visited link */
+a:visited {
+	color: rgb(139, 120, 170);
+}
+
+/* mouse over link */
+a:hover {
+color: hotpink;
+}
+
+/* selected link */
+a:active {
+color: blue;
+}
+
+.ui.selection.dropdown {
+	margin: 5% 5%;
+}
+
+body {
+	background-color: #cfcfcf;
+}

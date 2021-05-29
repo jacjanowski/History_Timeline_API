@@ -48,7 +48,7 @@ app.post('/on-this-day', function (req, res) {
                         wikipedia: data.events[i].wikipedia[j].wikipedia
                     });
                 }
-                console.log(arrayOfEvents[i].amount)
+                
 
             }
 

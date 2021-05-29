@@ -1,20 +1,30 @@
 <%- include("partials/header") %>
 
-    <body>
+<body>
 
 
-        <script>
-            $(document).ready(function () {
+    <script>
+        $(document).ready(function () {
 
-                $('.ui.dropdown')
-                    .dropdown()
-                    ;
-            })
-        </script>
+            $('.ui.dropdown')
+                .dropdown()
+                ;
+        })
+    </script>
+
+    <div class="ui placeholder segment">
+        <div class="ui icon header">
+            <i class="pdf file outline icon"></i>
+            Take a look into the past to find out what happened on a particular date! 
+            <br>
+            Made with the help of Wikipedia API
+        </div>
+        
 
 
-        <div class="ui two column centered grid">
-            <div class="column" style="text-align: center;">
+
+        <div class="ui two column centered grid" style="display: grid;">
+            <div class="column" style="margin: auto;">
 
                 <form action="/on-this-day" method="POST">
                     <div class="ui selection dropdown">
@@ -164,9 +174,10 @@
                         </div>
                     </div>
 
-                    <input type="submit" style="text-align: center;" />
-
+                    <input value="Find Out!" type="submit" style="text-align: center; margin-left: 31%;" class="ui primary button"/>
                 </form>
             </div>
         </div>
-    </body>
+    </div>
+
+</body>
