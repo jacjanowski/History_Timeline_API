@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap');
+
 * {
 	margin:0;
 	padding:0;
@@ -5,12 +7,13 @@
 }
 body {
   background-color:#fff;
-  color:#4d4c59;
-  font-family: "PT Serif",Georgia,Cambria,"Times New Roman",Times,serif;
+  font-family: 'Zilla Slab', serif;
 }
-h3{
-	font-family: sans-serif;
+.ui.header {
+	font-family: 'Zilla Slab', serif;
+
 }
+
 .container {
 	max-width:900px;
 	margin:50px auto;
@@ -100,6 +103,3 @@ color: blue;
 	margin: 5% 5%;
 }
 
-body {
-	background-color: #cfcfcf;
-}
