@@ -9,6 +9,15 @@
                 $('.ui.dropdown')
                     .dropdown()
                     ;
+
+                $('.ui.form')
+                    .form({
+                        fields: {
+                            month: 'empty',
+                            day: 'empty'
+
+                        }
+                    });
             })
         </script>
 
@@ -25,159 +34,174 @@
 
 
 
-                <div class="ui two column centered grid" style="display: grid;">
+                <div class="ui two column centered grid">
                     <div class="column" style="margin: auto;">
 
-                        <form action="/on-this-day" method="POST">
-                            <div class="ui selection dropdown">
-                                <input type="hidden" name="month">
-                                <i class="dropdown icon"></i>
-                                <div class="default text">Month</div>
-                                <div class="menu">
-                                    <div class="item" data-value="1" data-text="January">
-                                        January
-                                    </div>
-                                    <div class="item" data-value="2" data-text="February">
-                                        February
-                                    </div>
-                                    <div class="item" data-value="3" data-text="March">
-                                        March
-                                    </div>
-                                    <div class="item" data-value="4" data-text="April">
-                                        April
-                                    </div>
-                                    <div class="item" data-value="5" data-text="May">
-                                        May
-                                    </div>
-                                    <div class="item" data-value="6" data-text="June">
-                                        June
-                                    </div>
-                                    <div class="item" data-value="7" data-text="July">
-                                        July
-                                    </div>
-                                    <div class="item" data-value="8" data-text="August">
-                                        August
-                                    </div>
-                                    <div class="item" data-value="9" data-text="September">
-                                        September
-                                    </div>
-                                    <div class="item" data-value="10" data-text="October">
-                                        October
-                                    </div>
-                                    <div class="item" data-value="11" data-text="November">
-                                        November
-                                    </div>
-                                    <div class="item" data-value="12" data-text="December">
-                                        December
-                                    </div>
+                        <form class="ui form" action="/on-this-day" method="POST">
+                            <div class="field">
 
+                                <div class="ui selection dropdown" required>
+                                    <input type="hidden" name="month">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text">Month</div>
+                                    <div class="menu">
+                                        <div class="item" data-value="1" data-text="January">
+                                            January
+                                        </div>
+                                        <div class="item" data-value="2" data-text="February">
+                                            February
+                                        </div>
+                                        <div class="item" data-value="3" data-text="March">
+                                            March
+                                        </div>
+                                        <div class="item" data-value="4" data-text="April">
+                                            April
+                                        </div>
+                                        <div class="item" data-value="5" data-text="May">
+                                            May
+                                        </div>
+                                        <div class="item" data-value="6" data-text="June">
+                                            June
+                                        </div>
+                                        <div class="item" data-value="7" data-text="July">
+                                            July
+                                        </div>
+                                        <div class="item" data-value="8" data-text="August">
+                                            August
+                                        </div>
+                                        <div class="item" data-value="9" data-text="September">
+                                            September
+                                        </div>
+                                        <div class="item" data-value="10" data-text="October">
+                                            October
+                                        </div>
+                                        <div class="item" data-value="11" data-text="November">
+                                            November
+                                        </div>
+                                        <div class="item" data-value="12" data-text="December">
+                                            December
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="ui selection dropdown">
-                                <input type="hidden" name="day">
-                                <i class="dropdown icon"></i>
-                                <div class="default text">Day</div>
-                                <div class="menu">
-                                    <div class="item" data-value="1" data-text="1">
-                                        1
-                                    </div>
-                                    <div class="item" data-value="2" data-text="2">
-                                        2
-                                    </div>
-                                    <div class="item" data-value="3" data-text="3">
-                                        3
-                                    </div>
-                                    <div class="item" data-value="4" data-text="4">
-                                        4
-                                    </div>
-                                    <div class="item" data-value="5" data-text="5">
-                                        5
-                                    </div>
-                                    <div class="item" data-value="6" data-text="6">
-                                        6
-                                    </div>
-                                    <div class="item" data-value="7" data-text="7">
-                                        7
-                                    </div>
-                                    <div class="item" data-value="8" data-text="8">
-                                        8
-                                    </div>
-                                    <div class="item" data-value="9" data-text="9">
-                                        9
-                                    </div>
-                                    <div class="item" data-value="10" data-text="10">
-                                        10
-                                    </div>
-                                    <div class="item" data-value="11" data-text="11">
-                                        11
-                                    </div>
-                                    <div class="item" data-value="12" data-text="12">
-                                        12
-                                    </div>
-                                    <div class="item" data-value="13" data-text="13">
-                                        13
-                                    </div>
-                                    <div class="item" data-value="14" data-text="14">
-                                        14
-                                    </div>
-                                    <div class="item" data-value="15" data-text="15">
-                                        15
-                                    </div>
-                                    <div class="item" data-value="16" data-text="16">
-                                        16
-                                    </div>
-                                    <div class="item" data-value="17" data-text="17">
-                                        17
-                                    </div>
-                                    <div class="item" data-value="18" data-text="18">
-                                        18
-                                    </div>
-                                    <div class="item" data-value="19" data-text="19">
-                                        19
-                                    </div>
-                                    <div class="item" data-value="20" data-text="20">
-                                        20
-                                    </div>
-                                    <div class="item" data-value="21" data-text="21">
-                                        21
-                                    </div>
-                                    <div class="item" data-value="22" data-text="22">
-                                        22
-                                    </div>
-                                    <div class="item" data-value="23" data-text="23">
-                                        23
-                                    </div>
-                                    <div class="item" data-value="24" data-text="24">
-                                        24
-                                    </div>
-                                    <div class="item" data-value="25" data-text="25">
-                                        25
-                                    </div>
-                                    <div class="item" data-value="26" data-text="26">
-                                        26
-                                    </div>
-                                    <div class="item" data-value="27" data-text="27">
-                                        27
-                                    </div>
-                                    <div class="item" data-value="28" data-text="28">
-                                        28
-                                    </div>
-                                    <div class="item" data-value="29" data-text="29">
-                                        29
-                                    </div>
-                                    <div class="item" data-value="30" data-text="30">
-                                        30
-                                    </div>
-                                    <div class="item" data-value="31" data-text="31">
-                                        31
-                                    </div>
+                            <div class="field">
 
+
+                                <div class="ui selection dropdown">
+                                    <input type="hidden" name="day">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text">Day</div>
+                                    <div class="menu">
+                                        <div class="item" data-value="1" data-text="1">
+                                            1
+                                        </div>
+                                        <div class="item" data-value="2" data-text="2">
+                                            2
+                                        </div>
+                                        <div class="item" data-value="3" data-text="3">
+                                            3
+                                        </div>
+                                        <div class="item" data-value="4" data-text="4">
+                                            4
+                                        </div>
+                                        <div class="item" data-value="5" data-text="5">
+                                            5
+                                        </div>
+                                        <div class="item" data-value="6" data-text="6">
+                                            6
+                                        </div>
+                                        <div class="item" data-value="7" data-text="7">
+                                            7
+                                        </div>
+                                        <div class="item" data-value="8" data-text="8">
+                                            8
+                                        </div>
+                                        <div class="item" data-value="9" data-text="9">
+                                            9
+                                        </div>
+                                        <div class="item" data-value="10" data-text="10">
+                                            10
+                                        </div>
+                                        <div class="item" data-value="11" data-text="11">
+                                            11
+                                        </div>
+                                        <div class="item" data-value="12" data-text="12">
+                                            12
+                                        </div>
+                                        <div class="item" data-value="13" data-text="13">
+                                            13
+                                        </div>
+                                        <div class="item" data-value="14" data-text="14">
+                                            14
+                                        </div>
+                                        <div class="item" data-value="15" data-text="15">
+                                            15
+                                        </div>
+                                        <div class="item" data-value="16" data-text="16">
+                                            16
+                                        </div>
+                                        <div class="item" data-value="17" data-text="17">
+                                            17
+                                        </div>
+                                        <div class="item" data-value="18" data-text="18">
+                                            18
+                                        </div>
+                                        <div class="item" data-value="19" data-text="19">
+                                            19
+                                        </div>
+                                        <div class="item" data-value="20" data-text="20">
+                                            20
+                                        </div>
+                                        <div class="item" data-value="21" data-text="21">
+                                            21
+                                        </div>
+                                        <div class="item" data-value="22" data-text="22">
+                                            22
+                                        </div>
+                                        <div class="item" data-value="23" data-text="23">
+                                            23
+                                        </div>
+                                        <div class="item" data-value="24" data-text="24">
+                                            24
+                                        </div>
+                                        <div class="item" data-value="25" data-text="25">
+                                            25
+                                        </div>
+                                        <div class="item" data-value="26" data-text="26">
+                                            26
+                                        </div>
+                                        <div class="item" data-value="27" data-text="27">
+                                            27
+                                        </div>
+                                        <div class="item" data-value="28" data-text="28">
+                                            28
+                                        </div>
+                                        <div class="item" data-value="29" data-text="29">
+                                            29
+                                        </div>
+                                        <div class="item" data-value="30" data-text="30">
+                                            30
+                                        </div>
+                                        <div class="item" data-value="31" data-text="31">
+                                            31
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
+                            <div style="text-align: center; margin-left: 10%;" class="row">
 
-                            <input value="Find Out!" type="submit" style="text-align: center; margin-left: 30%;"
-                                class="ui primary button" />
+                                <input value="Births" type="submit" style="text-align: center;"
+                                    class="ui inverted button" />
+
+                                    <input value="Events" type="submit" 
+                                    class="ui inverted primary button" />
+                                    
+                                    <input value="Deaths" type="submit" 
+                                    class="ui inverted red button" />
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -194,7 +218,8 @@
                     <p>Deaths which are highlighted in history. </p>
                 </div>
                 <div class="six wide column right aligned">
-                    <img src="https://images.immediate.co.uk/production/volatile/sites/7/2018/01/Military-History_GettyImages-50691729-875e251.jpg?quality=45&resize=620,413" alt="">
+                    <img src="https://images.immediate.co.uk/production/volatile/sites/7/2018/01/Military-History_GettyImages-50691729-875e251.jpg?quality=45&resize=620,413"
+                        alt="">
                 </div>
             </div>
         </div>
