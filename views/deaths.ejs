@@ -1,0 +1,72 @@
+<%- include("partials/header") %>
+
+<body>
+    <script>
+        $(document).ready(function () {
+
+            $('.ui.sticky')
+                .sticky({
+                    context: '#context'
+                })
+                ;
+        })
+
+        document.addEventListener('scroll', timeline);
+
+        function timeline() {
+            var threshold_position = window.scrollY + window.innerHeight * 2 / 3;
+            //compare scrolltop with scrolltop on each timeline event
+            var timeline_events = document.querySelectorAll('.timeline li');
+            for (i in timeline_events) {
+                if (timeline_events[i].offsetTop < threshold_position) {
+                    timeline_events[i].classList.add('visible');
+                } else {
+                    timeline_events[i].classList.remove('visible');
+                }
+            }
+        }
+        timeline();
+
+
+    </script>
+
+
+    <nav style=" position: fixed; top: 0; background-color: white; width: 100%; z-index: 1;">
+
+        <h2 style="margin-top: 2%;" class="ui center aligned icon header">
+            <i class="calendar alternate outline icon"></i>
+            On <%= dataObject[0].date%>, these events occurred...
+        </h2>
+    </nav>
+
+
+    <% var iteration = 0;%>
+    <div style="padding-top: 5%;" class="container">
+        <ul class="timeline">
+            <% dataObject.forEach(function(action){ %>
+
+            <li>
+                <p>
+                    <b>
+                        yr. <%= action.year %>
+                    </b>
+
+                </p>
+                <p>
+                    <%= action.description%>
+                </p>
+                <b>Sources: </b>
+                <% for(var index = 0; index < action.amount; index++){ %>
+                
+                    <a target="_blank" style="font-size: 10px; text-decoration: underline;" href="<%= sourceObject[iteration].wikipedia%>"><%= sourceObject[iteration].title%></a>
+                
+                <% iteration = iteration + 1;%>
+                <% } %>
+
+                <% }); %>
+        </ul>
+    </div>
+
+</body>
+
+</html>

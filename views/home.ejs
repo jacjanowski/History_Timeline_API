@@ -37,7 +37,7 @@
                 <div class="ui two column centered grid">
                     <div class="column" style="margin: auto;">
 
-                        <form class="ui form" action="/on-this-day" method="POST">
+                        <form class="ui form" action="/on-this-day/events" method="POST">
                             <div class="field">
 
                                 <div class="ui selection dropdown" required>
@@ -194,13 +194,13 @@
                             <div style="text-align: center; margin-left: 10%;" class="row">
 
                                 <input value="Births" type="submit" style="text-align: center;"
-                                    class="ui inverted button" />
+                                    class="ui inverted button" formaction="/on-this-day/births"/>
 
                                     <input value="Events" type="submit" 
                                     class="ui inverted primary button" />
                                     
                                     <input value="Deaths" type="submit" 
-                                    class="ui inverted red button" />
+                                    class="ui inverted red button" formaction="/on-this-day/deaths"/>
                             </div>
                         </form>
                     </div>
