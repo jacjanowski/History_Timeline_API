@@ -8,7 +8,7 @@ var PORT = process.env.PORT || 3000;
 var app = express();
 
 
-// const URL = 'https://byabbe.se/on-this-day/1/7/events.json'
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
@@ -53,7 +53,7 @@ app.post('/on-this-day/events', function (req, res) {
             }
 
             res.render("show", { dataObject: arrayOfEvents, sourceObject: sources });
-        }
+        } 
     })
 })
 

@@ -6,18 +6,15 @@
     <script>
         $(document).ready(function () {
 
-            $('.ui.dropdown')
-                .dropdown()
-                ;
+            $('.ui.dropdown').dropdown();
 
-            $('.ui.form')
-                .form({
-                    fields: {
-                        month: 'empty',
-                        day: 'empty'
+            $('.ui.form').form({
+                fields: {
+                    month: 'empty',
+                    day: 'empty'
 
-                    }
-                });
+                }
+            });
         })
 
         $(document).on('scroll', function () {
@@ -35,17 +32,22 @@
                 }
             }
         });
+        
+
     </script>
 
-    <div class="ui inverted vertical masthead center aligned segment">
+    <div id="parallax" class="ui inverted vertical masthead center aligned segment">
 
 
         <div class="ui text container">
 
-            <div style="color: white;" class="ui huge header">
+            <div class="ui huge header">
                 On This Day in History
             </div>
-            <p>View historic events, deaths, and births and get to learn something cool!</p>
+
+            <div class="ui medium header">
+                View historic events, deaths, and births and get to learn something cool!
+            </div>
 
 
 
@@ -56,7 +58,7 @@
                     <form class="ui form" action="/on-this-day/events" method="POST">
                         <div class="field">
 
-                            <div class="ui selection dropdown" required>
+                            <div class="ui search selection dropdown" required>
                                 <input type="hidden" name="month">
                                 <i class="dropdown icon"></i>
                                 <div class="default text">Month</div>
@@ -209,12 +211,12 @@
                         </div>
                         <div style="text-align: center; margin-left: 10%;" class="row">
 
-                            <input value="Births" type="submit" style="text-align: center;" class="ui inverted button"
-                                formaction="/on-this-day/births" />
+                            <input value="Births" type="submit" style="text-align: center;"
+                                class="ui black button" formaction="/on-this-day/births" />
 
-                            <input value="Events" type="submit" class="ui inverted primary button" />
+                            <input value="Events" type="submit" class="ui blue button" />
 
-                            <input value="Deaths" type="submit" class="ui inverted red button"
+                            <input value="Deaths" type="submit" class="ui  red button"
                                 formaction="/on-this-day/deaths" />
                         </div>
                     </form>
@@ -223,27 +225,27 @@
         </div>
     </div>
 
-    <section>
 
-        <div style="margin: auto;" class="ui middle aligned stackable grid container">
 
-            <div class="row">
+    <div style="margin: auto;" class="ui middle aligned stackable grid container">
 
-                <div class="ten wide column">
-                    <div class="ui header">
-                        Historic Events
-                    </div>
-                    <p>Check out some neat facts about history from all over the world. You'll find something that will
-                        interest you!</p>
+        <div class="row">
+
+            <div class="ten wide column">
+                <div class="ui header">
+                    Historic Events
                 </div>
-                <div class="six wide column right aligned">
-                    <img src="https://images.immediate.co.uk/production/volatile/sites/7/2018/01/Military-History_GettyImages-50691729-875e251.jpg?quality=45&resize=620,413"
-                        alt="">
-                </div>
+                <p>Check out some neat facts about history from all over the world. You'll find something that will
+                    interest you!</p>
+            </div>
+            <div class="six wide column right aligned">
+                <img src="https://images.immediate.co.uk/production/volatile/sites/7/2018/01/Military-History_GettyImages-50691729-875e251.jpg?quality=45&resize=620,413"
+                    alt="">
             </div>
         </div>
+    </div>
 
-    </section>
+
     <section>
 
         <div style="margin: auto;" class="ui middle aligned stackable grid container">
@@ -265,8 +267,8 @@
     </section>
 
     <section>
-        <div class="row">
-            <div style="margin: auto;" class="ui middle aligned stackable grid container">
+        <div style="margin: auto;" class="ui middle aligned stackable grid container">
+            <div class="row">
                 <div class="ten wide column">
                     <div class="ui header">
                         Deaths in history
@@ -274,7 +276,7 @@
                     <p>Deaths that have occurred in the past and how they happened. </p>
                 </div>
                 <div class="six wide column right aligned">
-                    <img src="https://www.sciencemag.org/sites/default/files/styles/inline__450w__no_aspect/public/ca_0515_Inequality_leadblackdeath-700px.jpg?itok=Tid_reAr"
+                    <img src="https://static01.nyt.com/images/2012/04/03/science/03CIVI_SPAN/03CIVI-articleLarge.jpg?quality=75&auto=webp&disable=upscale"
                         alt="">
                 </div>
             </div>

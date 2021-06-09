@@ -113,3 +113,17 @@ section.visible {
 	opacity: 1;
 	transform: translate(0, 0); 
 }
+
+#parallax {
+	/* The image used */
+	background-image: url("https://www.history.com/.image/t_share/MTU3ODc5MDg2OTcyOTM3NTQ1/rafael-sanzio-da-urbino-april-6-or-march-28-1483-april-6-1520-the-school-of-athens-or-scuola-di-atene-in-italian-is-one-of-the-most-famous-paintings-by-the-italian-renaissance-artist-raphael.jpg");
+  
+	/* Set a specific height */
+	height: 80%;
+  
+	/* Create the parallax scrolling effect */
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+  }
