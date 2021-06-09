@@ -5,31 +5,56 @@
 
         <script>
             $(document).ready(function () {
+                $('.ui.dropdown').dropdown();
+                $('.ui.form').form({
+                    fields: {
+                        month: 'empty',
+                        day: 'empty'
+                    }
+                });
+                $('.ui.dropdown').click(function () {
+                    var month = $('#month-dropdown').dropdown('get value');
+                    var monthName = $('#month-dropdown').dropdown('get text');
+                    var day = $('#day-dropdown').dropdown('get value');
 
-                $('.ui.dropdown')
-                    .dropdown()
-                    ;
+                    if((month == 4 || month == 6 || month == 9 || month == 11)
+                       && day == 31){
+                        alert("There isn't 31 days in " + monthName)
+                    } else if((month == 2 && day == 30) || (month == 2 && day == 31)) {
+                        alert("There aren't 30 or 31 days in February.");
+                    }
+                    
+                });
+            });
+            $(document).on('scroll', function () {
+                var pageTop = $(document).scrollTop();
+                var pageBottom = pageTop + $(window).height();
+                var tags = $('section');
+                for (var i = 0; i < tags.length; i++) {
+                    var tag = tags[i];
+                    if ($(tag).position().top < pageBottom) {
+                        $(tag).addClass('visible');
+                    } else {
+                        $(tag).removeClass('visible');
+                    }
+                }
+            });
 
-                $('.ui.form')
-                    .form({
-                        fields: {
-                            month: 'empty',
-                            day: 'empty'
 
-                        }
-                    });
-            })
         </script>
 
-        <div class="ui inverted vertical masthead center aligned segment">
+        <div id="parallax" class="ui inverted vertical masthead center aligned segment">
 
 
             <div class="ui text container">
 
-                <div style="color: white;" class="ui huge header">
+                <div style="font-size: 40px;" class="ui huge header">
                     On This Day in History
                 </div>
-                <p>View historic events, deaths, and births and get to learn something cool!</p>
+
+                <div class="ui medium header">
+                    View historic events, deaths, and births and get to learn something cool!
+                </div>
 
 
 
@@ -37,10 +62,10 @@
                 <div class="ui two column centered grid">
                     <div class="column" style="margin: auto;">
 
-                        <form class="ui form" action="/on-this-day" method="POST">
+                        <form class="ui form" action="/on-this-day/events" method="POST">
                             <div class="field">
 
-                                <div class="ui selection dropdown" required>
+                                <div class="ui search selection dropdown" id="month-dropdown" required>
                                     <input type="hidden" name="month">
                                     <i class="dropdown icon"></i>
                                     <div class="default text">Month</div>
@@ -89,7 +114,7 @@
                             <div class="field">
 
 
-                                <div class="ui selection dropdown">
+                                <div class="ui selection dropdown" id="day-dropdown" required>
                                     <input type="hidden" name="day">
                                     <i class="dropdown icon"></i>
                                     <div class="default text">Day</div>
@@ -193,14 +218,13 @@
                             </div>
                             <div style="text-align: center; margin-left: 10%;" class="row">
 
-                                <input value="Births" type="submit" style="text-align: center;"
-                                    class="ui inverted button" />
+                                <input value="Births" type="submit" style="text-align: center;" class="ui black button"
+                                    formaction="/on-this-day/births" />
 
-                                    <input value="Events" type="submit" 
-                                    class="ui inverted primary button" />
-                                    
-                                    <input value="Deaths" type="submit" 
-                                    class="ui inverted red button" />
+                                <input value="Events" type="submit" class="ui blue button" />
+
+                                <input value="Deaths" type="submit" class="ui  red button"
+                                    formaction="/on-this-day/deaths" />
                             </div>
                         </form>
                     </div>
@@ -208,14 +232,18 @@
             </div>
         </div>
 
+
+
         <div style="margin: auto;" class="ui middle aligned stackable grid container">
+
             <div class="row">
 
                 <div class="ten wide column">
                     <div class="ui header">
-                        Deaths in history
+                        Historic Events
                     </div>
-                    <p>Deaths which are highlighted in history. </p>
+                    <p>Check out some neat facts about history from all over the world. You'll find something that will
+                        interest you!</p>
                 </div>
                 <div class="six wide column right aligned">
                     <img src="https://images.immediate.co.uk/production/volatile/sites/7/2018/01/Military-History_GettyImages-50691729-875e251.jpg?quality=45&resize=620,413"
@@ -224,4 +252,41 @@
             </div>
         </div>
 
+
+        <section>
+
+            <div style="margin: auto;" class="ui middle aligned stackable grid container">
+                <div class="row">
+
+                    <div class="ten wide column">
+                        <div class="ui header">
+                            Births in history
+                        </div>
+                        <p>Find out some famous people's birthday's and who had one on the same day as yours. </p>
+                    </div>
+                    <div class="six wide column right aligned">
+                        <img src="https://www.history.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTYzNDc4ODI3NzQ0MzcyMDY2/royal-birth-promo-gettyimages-959146664.jpg"
+                            alt="">
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section>
+            <div style="margin: auto;" class="ui middle aligned stackable grid container">
+                <div class="row">
+                    <div class="ten wide column">
+                        <div class="ui header">
+                            Deaths in history
+                        </div>
+                        <p>Deaths that have occurred in the past and how they happened. </p>
+                    </div>
+                    <div class="six wide column right aligned">
+                        <img src="https://static01.nyt.com/images/2012/04/03/science/03CIVI_SPAN/03CIVI-articleLarge.jpg?quality=75&auto=webp&disable=upscale"
+                            alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
     </body>
