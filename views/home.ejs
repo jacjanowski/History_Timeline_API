@@ -1,358 +1,368 @@
 <%- include("partials/header") %>
 
-    <body>
+<body>
 
 
-        <script>
-            $(document).ready(function () {
-                $('.ui.dropdown').dropdown();
-                $('.ui.form').form({
-                    fields: {
-                        month: 'empty',
-                        day: 'empty'
-                    }
-                });
-                $('.ui.dropdown').click(function () {
-                    var month = $('#month-dropdown').dropdown('get value');
-                    var monthName = $('#month-dropdown').dropdown('get text');
-                    var day = $('#day-dropdown').dropdown('get value');
-
-                    if ((month == 4 || month == 6 || month == 9 || month == 11)
-                        && day == 31) {
-                        alert("There isn't 31 days in " + monthName)
-                    } else if ((month == 2 && day == 30) || (month == 2 && day == 31)) {
-                        alert("There aren't 30 or 31 days in February.");
-                    }
-
-                });
-            });
-            $(document).on('scroll', function () {
-                var pageTop = $(document).scrollTop();
-                var pageBottom = pageTop + $(window).height();
-                var tags = $('section');
-                for (var i = 0; i < tags.length; i++) {
-                    var tag = tags[i];
-                    if ($(tag).position().top < pageBottom) {
-                        $(tag).addClass('visible');
-                    } else {
-                        $(tag).removeClass('visible');
-                    }
+    <script>
+        $(document).ready(function () {
+            $('.ui.dropdown').dropdown();
+            $('.ui.form').form({
+                fields: {
+                    month: 'empty',
+                    day: 'empty'
                 }
             });
+            $('.ui.dropdown').click(function () {
+                var month = $('#month-dropdown').dropdown('get value');
+                var monthName = $('#month-dropdown').dropdown('get text');
+                var day = $('#day-dropdown').dropdown('get value');
 
-            $(document).ready(function () {
+                if ((month == 4 || month == 6 || month == 9 || month == 11)
+                    && day == 31) {
+                    alert("There isn't 31 days in " + monthName)
+                } else if ((month == 2 && day == 30) || (month == 2 && day == 31)) {
+                    alert("There aren't 30 or 31 days in February.");
+                }
 
-                $('.ui.sticky')
-                    .sticky({
-                        context: '#context'
-                    })
-                    ;
-            })
-
-            document.addEventListener('scroll', timeline);
-
-            function timeline() {
-                var threshold_position = window.scrollY + window.innerHeight * 2 / 3;
-                //compare scrolltop with scrolltop on each timeline event
-                var timeline_events = document.querySelectorAll('.timeline li');
-                for (i in timeline_events) {
-                    if (timeline_events[i].offsetTop < threshold_position) {
-                        timeline_events[i].classList.add('visible');
-                    } else {
-                        timeline_events[i].classList.remove('visible');
-                    }
+            });
+        });
+        $(document).on('scroll', function () {
+            var pageTop = $(document).scrollTop();
+            var pageBottom = pageTop + $(window).height();
+            var tags = $('section');
+            for (var i = 0; i < tags.length; i++) {
+                var tag = tags[i];
+                if ($(tag).position().top < pageBottom) {
+                    $(tag).addClass('visible');
+                } else {
+                    $(tag).removeClass('visible');
                 }
             }
-            timeline();
+        });
 
-        </script>
+        $(document).ready(function () {
+
+            $('.ui.sticky')
+                .sticky({
+                    context: '#context'
+                })
+                ;
+        })
+
+        document.addEventListener('scroll', timeline);
+
+        function timeline() {
+            var threshold_position = window.scrollY + window.innerHeight * 2 / 3;
+            //compare scrolltop with scrolltop on each timeline event
+            var timeline_events = document.querySelectorAll('.timeline li');
+            for (i in timeline_events) {
+                if (timeline_events[i].offsetTop < threshold_position) {
+                    timeline_events[i].classList.add('visible');
+                } else {
+                    timeline_events[i].classList.remove('visible');
+                }
+            }
+        }
+        timeline();
+
+    </script>
 
 
 
-        <div id="parallax" class="ui inverted vertical masthead center aligned segment">
-
-            
-
-            <div class="ui text container">
-
-
-                <div style="font-size: 40px;" class="ui huge header">
-                    On This Day in History
-                </div>
-
-                <div class="ui medium header">
-                    View historic events, deaths, and births and get to learn something cool!
-                </div>
+    <div id="parallax" class="ui inverted vertical masthead center aligned segment">
 
 
 
+        <div class="ui text container">
 
-                <div class="ui two column centered grid">
-                    <div class="column" style="margin: auto;">
 
-                        <form class="ui form" action="/on-this-day/events" method="POST">
-                            <div class="field">
+            <div style="font-size: 40px;     color: white;
+                text-shadow:
+                -1px -1px 0 #000,
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                1px 1px 0 #000; " class="ui huge header">
+                On This Day in History
+            </div>
 
-                                <div class="ui search selection dropdown" id="month-dropdown" required>
-                                    <input type="hidden" name="month">
-                                    <i class="dropdown icon"></i>
-                                    <div class="default text">Month</div>
-                                    <div class="menu">
-                                        <div class="item" data-value="1" data-text="January">
-                                            January
-                                        </div>
-                                        <div class="item" data-value="2" data-text="February">
-                                            February
-                                        </div>
-                                        <div class="item" data-value="3" data-text="March">
-                                            March
-                                        </div>
-                                        <div class="item" data-value="4" data-text="April">
-                                            April
-                                        </div>
-                                        <div class="item" data-value="5" data-text="May">
-                                            May
-                                        </div>
-                                        <div class="item" data-value="6" data-text="June">
-                                            June
-                                        </div>
-                                        <div class="item" data-value="7" data-text="July">
-                                            July
-                                        </div>
-                                        <div class="item" data-value="8" data-text="August">
-                                            August
-                                        </div>
-                                        <div class="item" data-value="9" data-text="September">
-                                            September
-                                        </div>
-                                        <div class="item" data-value="10" data-text="October">
-                                            October
-                                        </div>
-                                        <div class="item" data-value="11" data-text="November">
-                                            November
-                                        </div>
-                                        <div class="item" data-value="12" data-text="December">
-                                            December
-                                        </div>
+            <div style="    color: white;
+            text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000; " class="ui medium header">
+                View historic <span style="color: dimgray;">births</span>, <span style="color: rgb(17, 128, 255)">events</span> and <span style="color: rgb(226, 76, 76);">deaths</span> and learn something interesting!
+            </div>
 
+
+
+
+            <div class="ui two column centered grid">
+                <div class="column" style="margin: auto;">
+
+                    <form class="ui form" action="/on-this-day/events" method="POST">
+                        <div class="field">
+
+                            <div class="ui search selection dropdown" id="month-dropdown" required>
+                                <input type="hidden" name="month">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">Month</div>
+                                <div class="menu">
+                                    <div class="item" data-value="1" data-text="January">
+                                        January
                                     </div>
+                                    <div class="item" data-value="2" data-text="February">
+                                        February
+                                    </div>
+                                    <div class="item" data-value="3" data-text="March">
+                                        March
+                                    </div>
+                                    <div class="item" data-value="4" data-text="April">
+                                        April
+                                    </div>
+                                    <div class="item" data-value="5" data-text="May">
+                                        May
+                                    </div>
+                                    <div class="item" data-value="6" data-text="June">
+                                        June
+                                    </div>
+                                    <div class="item" data-value="7" data-text="July">
+                                        July
+                                    </div>
+                                    <div class="item" data-value="8" data-text="August">
+                                        August
+                                    </div>
+                                    <div class="item" data-value="9" data-text="September">
+                                        September
+                                    </div>
+                                    <div class="item" data-value="10" data-text="October">
+                                        October
+                                    </div>
+                                    <div class="item" data-value="11" data-text="November">
+                                        November
+                                    </div>
+                                    <div class="item" data-value="12" data-text="December">
+                                        December
+                                    </div>
+
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="field">
+                        <div class="field">
 
 
-                                <div class="ui selection dropdown" id="day-dropdown" required>
-                                    <input type="hidden" name="day">
-                                    <i class="dropdown icon"></i>
-                                    <div class="default text">Day</div>
-                                    <div class="menu">
-                                        <div class="item" data-value="1" data-text="1">
-                                            1
-                                        </div>
-                                        <div class="item" data-value="2" data-text="2">
-                                            2
-                                        </div>
-                                        <div class="item" data-value="3" data-text="3">
-                                            3
-                                        </div>
-                                        <div class="item" data-value="4" data-text="4">
-                                            4
-                                        </div>
-                                        <div class="item" data-value="5" data-text="5">
-                                            5
-                                        </div>
-                                        <div class="item" data-value="6" data-text="6">
-                                            6
-                                        </div>
-                                        <div class="item" data-value="7" data-text="7">
-                                            7
-                                        </div>
-                                        <div class="item" data-value="8" data-text="8">
-                                            8
-                                        </div>
-                                        <div class="item" data-value="9" data-text="9">
-                                            9
-                                        </div>
-                                        <div class="item" data-value="10" data-text="10">
-                                            10
-                                        </div>
-                                        <div class="item" data-value="11" data-text="11">
-                                            11
-                                        </div>
-                                        <div class="item" data-value="12" data-text="12">
-                                            12
-                                        </div>
-                                        <div class="item" data-value="13" data-text="13">
-                                            13
-                                        </div>
-                                        <div class="item" data-value="14" data-text="14">
-                                            14
-                                        </div>
-                                        <div class="item" data-value="15" data-text="15">
-                                            15
-                                        </div>
-                                        <div class="item" data-value="16" data-text="16">
-                                            16
-                                        </div>
-                                        <div class="item" data-value="17" data-text="17">
-                                            17
-                                        </div>
-                                        <div class="item" data-value="18" data-text="18">
-                                            18
-                                        </div>
-                                        <div class="item" data-value="19" data-text="19">
-                                            19
-                                        </div>
-                                        <div class="item" data-value="20" data-text="20">
-                                            20
-                                        </div>
-                                        <div class="item" data-value="21" data-text="21">
-                                            21
-                                        </div>
-                                        <div class="item" data-value="22" data-text="22">
-                                            22
-                                        </div>
-                                        <div class="item" data-value="23" data-text="23">
-                                            23
-                                        </div>
-                                        <div class="item" data-value="24" data-text="24">
-                                            24
-                                        </div>
-                                        <div class="item" data-value="25" data-text="25">
-                                            25
-                                        </div>
-                                        <div class="item" data-value="26" data-text="26">
-                                            26
-                                        </div>
-                                        <div class="item" data-value="27" data-text="27">
-                                            27
-                                        </div>
-                                        <div class="item" data-value="28" data-text="28">
-                                            28
-                                        </div>
-                                        <div class="item" data-value="29" data-text="29">
-                                            29
-                                        </div>
-                                        <div class="item" data-value="30" data-text="30">
-                                            30
-                                        </div>
-                                        <div class="item" data-value="31" data-text="31">
-                                            31
-                                        </div>
-
+                            <div class="ui selection dropdown" id="day-dropdown" required>
+                                <input type="hidden" name="day">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">Day</div>
+                                <div class="menu">
+                                    <div class="item" data-value="1" data-text="1">
+                                        1
                                     </div>
+                                    <div class="item" data-value="2" data-text="2">
+                                        2
+                                    </div>
+                                    <div class="item" data-value="3" data-text="3">
+                                        3
+                                    </div>
+                                    <div class="item" data-value="4" data-text="4">
+                                        4
+                                    </div>
+                                    <div class="item" data-value="5" data-text="5">
+                                        5
+                                    </div>
+                                    <div class="item" data-value="6" data-text="6">
+                                        6
+                                    </div>
+                                    <div class="item" data-value="7" data-text="7">
+                                        7
+                                    </div>
+                                    <div class="item" data-value="8" data-text="8">
+                                        8
+                                    </div>
+                                    <div class="item" data-value="9" data-text="9">
+                                        9
+                                    </div>
+                                    <div class="item" data-value="10" data-text="10">
+                                        10
+                                    </div>
+                                    <div class="item" data-value="11" data-text="11">
+                                        11
+                                    </div>
+                                    <div class="item" data-value="12" data-text="12">
+                                        12
+                                    </div>
+                                    <div class="item" data-value="13" data-text="13">
+                                        13
+                                    </div>
+                                    <div class="item" data-value="14" data-text="14">
+                                        14
+                                    </div>
+                                    <div class="item" data-value="15" data-text="15">
+                                        15
+                                    </div>
+                                    <div class="item" data-value="16" data-text="16">
+                                        16
+                                    </div>
+                                    <div class="item" data-value="17" data-text="17">
+                                        17
+                                    </div>
+                                    <div class="item" data-value="18" data-text="18">
+                                        18
+                                    </div>
+                                    <div class="item" data-value="19" data-text="19">
+                                        19
+                                    </div>
+                                    <div class="item" data-value="20" data-text="20">
+                                        20
+                                    </div>
+                                    <div class="item" data-value="21" data-text="21">
+                                        21
+                                    </div>
+                                    <div class="item" data-value="22" data-text="22">
+                                        22
+                                    </div>
+                                    <div class="item" data-value="23" data-text="23">
+                                        23
+                                    </div>
+                                    <div class="item" data-value="24" data-text="24">
+                                        24
+                                    </div>
+                                    <div class="item" data-value="25" data-text="25">
+                                        25
+                                    </div>
+                                    <div class="item" data-value="26" data-text="26">
+                                        26
+                                    </div>
+                                    <div class="item" data-value="27" data-text="27">
+                                        27
+                                    </div>
+                                    <div class="item" data-value="28" data-text="28">
+                                        28
+                                    </div>
+                                    <div class="item" data-value="29" data-text="29">
+                                        29
+                                    </div>
+                                    <div class="item" data-value="30" data-text="30">
+                                        30
+                                    </div>
+                                    <div class="item" data-value="31" data-text="31">
+                                        31
+                                    </div>
+
                                 </div>
                             </div>
-                            <div style="text-align: center; margin-left: 10%;" class="row">
+                        </div>
+                        <div style="text-align: center; margin-left: 10%;" class="row">
 
-                                <input value="Births" type="submit" style="text-align: center;" class="ui black button"
-                                    formaction="/on-this-day/births" />
+                            <input value="Births" type="submit" style="text-align: center;" class="ui black button"
+                                formaction="/on-this-day/births" />
 
-                                <input value="Events" type="submit" class="ui blue button" />
+                            <input value="Events" type="submit" class="ui blue button" />
 
-                                <input value="Deaths" type="submit" class="ui  red button"
-                                    formaction="/on-this-day/deaths" />
-                            </div>
-                        </form>
+                            <input value="Deaths" type="submit" class="ui  red button"
+                                formaction="/on-this-day/deaths" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <% var iteration=0;%>
+    <div class="container">
+
+        <div class="ui header" style="text-align: center; font-size: xx-large;">Today on <%=
+                        dataObject[0].date%>, the following happened</div>
+        <ul class="timeline">
+            <% dataObject.forEach(function(action){ %>
+
+            <li>
+                <p>
+                    <b>
+                        yr. <%= action.year %>
+                    </b>
+
+                </p>
+                <p>
+                    <%= action.description%>
+                </p>
+                <b>Sources: </b>
+                <% for(var index=0; index < action.amount; index++){ %>
+
+                <a target="_blank" style="font-size: 10px; text-decoration: underline;"
+                    href="<%= sourceObject[iteration].wikipedia%>">
+                    <%= sourceObject[iteration].title%>
+                </a>
+
+                <% iteration=iteration + 1;%>
+                <% } %>
+
+                <% }); %>
+        </ul>
+    </div>
+
+
+    <div style="margin: auto;" class="ui middle aligned stackable grid container">
+
+        <div class="row">
+
+            <div class="ten wide column">
+                <div class="ui header">
+
+                </div>
+                <p>Check out some neat facts about history from all over the world. You'll find something that
+                    will
+                    interest you!</p>
+            </div>
+            <div class="six wide column right aligned">
+                <img src="https://images.immediate.co.uk/production/volatile/sites/7/2018/01/Military-History_GettyImages-50691729-875e251.jpg?quality=45&resize=620,413"
+                    alt="">
+            </div>
+        </div>
+    </div>
+
+
+    <section>
+
+        <div style="margin: auto;" class="ui middle aligned stackable grid container">
+            <div class="row">
+
+                <div class="ten wide column">
+                    <div class="ui header">
+                        Births in history
                     </div>
+                    <p>Find out some famous people's birthday's and who had one on the same day as yours. </p>
+                </div>
+                <div class="six wide column right aligned">
+                    <img src="https://www.history.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTYzNDc4ODI3NzQ0MzcyMDY2/royal-birth-promo-gettyimages-959146664.jpg"
+                        alt="">
                 </div>
             </div>
         </div>
 
+    </section>
 
-
-
-
-
-        <% var iteration=0;%>
-            <div class="container">
-                
-                <div class="ui header" style="text-align: center; font-size: xx-large;">Today on <%=
-                        dataObject[0].date%>, the following happened</div>
-                <ul class="timeline">
-                    <% dataObject.forEach(function(action){ %>
-
-                        <li>
-                            <p>
-                                <b>
-                                    yr. <%= action.year %>
-                                </b>
-
-                            </p>
-                            <p>
-                                <%= action.description%>
-                            </p>
-                            <b>Sources: </b>
-                            <% for(var index=0; index < action.amount; index++){ %>
-
-                                <a target="_blank" style="font-size: 10px; text-decoration: underline;"
-                                    href="<%= sourceObject[iteration].wikipedia%>">
-                                    <%= sourceObject[iteration].title%>
-                                </a>
-
-                                <% iteration=iteration + 1;%>
-                                    <% } %>
-
-                                        <% }); %>
-                </ul>
-            </div>
-
-
-            <div style="margin: auto;" class="ui middle aligned stackable grid container">
-
-                <div class="row">
-
-                    <div class="ten wide column">
-                        <div class="ui header">
-
-                        </div>
-                        <p>Check out some neat facts about history from all over the world. You'll find something that
-                            will
-                            interest you!</p>
+    <section>
+        <div style="margin: auto;" class="ui middle aligned stackable grid container">
+            <div class="row">
+                <div class="ten wide column">
+                    <div class="ui header">
+                        Deaths in history
                     </div>
-                    <div class="six wide column right aligned">
-                        <img src="https://images.immediate.co.uk/production/volatile/sites/7/2018/01/Military-History_GettyImages-50691729-875e251.jpg?quality=45&resize=620,413"
-                            alt="">
-                    </div>
+                    <p>Deaths that have occurred in the past and how they happened. </p>
+                </div>
+                <div class="six wide column right aligned">
+                    <img src="https://static01.nyt.com/images/2012/04/03/science/03CIVI_SPAN/03CIVI-articleLarge.jpg?quality=75&auto=webp&disable=upscale"
+                        alt="">
                 </div>
             </div>
-
-
-            <section>
-
-                <div style="margin: auto;" class="ui middle aligned stackable grid container">
-                    <div class="row">
-
-                        <div class="ten wide column">
-                            <div class="ui header">
-                                Births in history
-                            </div>
-                            <p>Find out some famous people's birthday's and who had one on the same day as yours. </p>
-                        </div>
-                        <div class="six wide column right aligned">
-                            <img src="https://www.history.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTYzNDc4ODI3NzQ0MzcyMDY2/royal-birth-promo-gettyimages-959146664.jpg"
-                                alt="">
-                        </div>
-                    </div>
-                </div>
-
-            </section>
-
-            <section>
-                <div style="margin: auto;" class="ui middle aligned stackable grid container">
-                    <div class="row">
-                        <div class="ten wide column">
-                            <div class="ui header">
-                                Deaths in history
-                            </div>
-                            <p>Deaths that have occurred in the past and how they happened. </p>
-                        </div>
-                        <div class="six wide column right aligned">
-                            <img src="https://static01.nyt.com/images/2012/04/03/science/03CIVI_SPAN/03CIVI-articleLarge.jpg?quality=75&auto=webp&disable=upscale"
-                                alt="">
-                        </div>
-                    </div>
-                </div>
-            </section>
-    </body>
+        </div>
+    </section>
+</body>
